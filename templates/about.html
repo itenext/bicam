@@ -1,139 +1,63 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}About Us - Bichem Laboratories{% endblock %}
+{% block title %}About Bichem Laboratories | Veterinary Healthcare Manufacturer{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Learn about Bichem Laboratories, a veterinary and feed supplement company focused on quality manufacturing, research, and animal healthcare solutions.">
+<meta name="keywords" content="about Bichem Laboratories, veterinary manufacturer, feed supplements India, animal healthcare company">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="About Bichem Laboratories">
+<meta property="og:description" content="Quality manufacturing and research-led animal healthcare solutions for poultry, livestock, pets, and aquaculture.">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/about.jpg' %}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock %}
 
 {% block content %}
-<style>
-    .section-container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        max-width: 1200px;
-        margin: 40px auto;
-        padding: 20px;
-        gap: 30px;
-    }
-
-    .section-container img {
-        flex: 1;
-        min-width: 280px;
-        max-width: 45%;
-        max-height: 400px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
-
-    .section-text {
-        flex: 1;
-        min-width: 280px;
-        max-width: 50%;
-        padding: 20px;
-        text-align: justify;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
-        color: #102942;
-        margin-bottom: 10px;
-    }
-
-    .section-content {
-        font-size: 1.1rem;
-        color: #272626;
-        line-height: 1.6;
-    }
-
-    /* Alternate layout */
-    .section-container:nth-child(even) {
-        flex-direction: row-reverse;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-        .section-title {
-            font-size: 2rem;
-        }
-        .section-content {
-            font-size: 1rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .section-container {
-            flex-direction: column !important;
-            text-align: center;
-            gap: 20px;
-        }
-
-        .section-container img,
-        .section-text {
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .section-text {
-            padding: 15px;
-        }
-    }
-</style>
-
-<!-- About Us Section -->
-<div class="section-container">
-    <img src="{% static 'images/about.jpg' %}" alt="Bichem Laboratories">
-    <div class="section-text">
-        <h2 class="section-title">Bichem Laboratories</h2>
-        <p class="section-content">
-            Bichem Laboratories, headquartered in Karawal Nagar, Delhi, is a pioneering company dedicated to the
-            manufacturing and marketing of high-quality feed supplements in India and abroad. At BICHEM LABORATORIES,
-            we have braced ourselves for immense growth in all spheres of our operations, including R&D and
-            Manufacturing/Production in GMP conditions. With a state-of-the-art manufacturing plant in Muzaffarpur,
-            Bihar, we are committed to excellence in providing nutritional solutions for the livestock and aquaculture
-            industries.
-        </p>
+<section class="page-hero about-hero">
+    <div class="container">
+        <span class="eyebrow">About us</span>
+        <h1>Research-led animal healthcare from Bichem Laboratories.</h1>
+        <p>We manufacture and market veterinary and feed supplement solutions designed for practical animal health, productivity, and professional confidence.</p>
     </div>
-</div>
+</section>
 
-<!-- Our Mission Section -->
-<div class="section-container">
-    <img src="{% static 'images/mission.jpg' %}" alt="Our Mission">
-    <div class="section-text">
-        <h3 class="section-title">Our Mission</h3>
-        <p class="section-content">
-            At Bichem Laboratories, our mission is to enhance the health and productivity of livestock and aquaculture
-            through innovative and scientifically formulated feed supplements. We strive to contribute to the
-            sustainable growth of the agricultural sector by delivering superior products that meet the evolving needs
-            of our customers.
-        </p>
+<section class="section">
+    <div class="container">
+        <div class="story-stack">
+            <article class="story-row">
+                <img src="{% static 'images/about.jpg' %}" alt="Bichem Laboratories company profile">
+                <div>
+                    <span class="eyebrow">Company</span>
+                    <h2>Bichem Laboratories</h2>
+                    <p>Headquartered in Karawal Nagar, Delhi, Bichem Laboratories is dedicated to manufacturing and marketing high-quality feed supplements in India and abroad. With manufacturing operations in Muzaffarpur, Bihar, the company focuses on quality, research, and responsive animal healthcare support.</p>
+                </div>
+            </article>
+            <article class="story-row reverse">
+                <img src="{% static 'images/mission.jpg' %}" alt="Bichem Laboratories mission">
+                <div>
+                    <span class="eyebrow">Mission</span>
+                    <h2>Better animal health, stronger productivity.</h2>
+                    <p>Our mission is to enhance the health and productivity of livestock, poultry, pets, and aquaculture through scientifically formulated supplements and veterinary solutions that meet the evolving needs of customers.</p>
+                </div>
+            </article>
+            <article class="story-row">
+                <img src="{% static 'images/quality.jpg' %}" alt="Bichem Laboratories quality assurance">
+                <div>
+                    <span class="eyebrow">Quality</span>
+                    <h2>Quality assurance at every stage.</h2>
+                    <p>Quality remains central to our process, from sourcing raw materials to final product checks. Our production discipline and experienced professionals support consistent, field-ready outcomes.</p>
+                </div>
+            </article>
+            <article class="story-row reverse">
+                <img src="{% static 'images/global.jpg' %}" alt="Bichem Laboratories customer support">
+                <div>
+                    <span class="eyebrow">Presence</span>
+                    <h2>Reliable support for partners and customers.</h2>
+                    <p>We work with field partners to make product access, guidance, and delivery more dependable for customers across domestic and international markets.</p>
+                </div>
+            </article>
+        </div>
     </div>
-</div>
-
-<!-- Quality Assurance Section -->
-<div class="section-container">
-    <img src="{% static 'images/quality.jpg' %}" alt="Quality Assurance">
-    <div class="section-text">
-        <h3 class="section-title">Quality Assurance</h3>
-        <p class="section-content">
-            At Bichem Laboratories, quality is our top priority. We adhere to stringent quality control measures at
-            every stage of the manufacturing process, from sourcing raw materials to final product testing. Our
-            manufacturing facility is equipped with advanced technology and operated by a team of experienced
-            professionals.
-        </p>
-    </div>
-</div>
-
-<!-- Global Presence Section -->
-<div class="section-container">
-    <img src="{% static 'images/global.jpg' %}" alt="Global Presence">
-    <div class="section-text">
-        <h3 class="section-title">Global Presence</h3>
-        <p class="section-content">
-            With a strong presence in both domestic and international markets, Bichem Laboratories is committed to
-            serving the needs of customers around the world. We work closely with distributors and partners to ensure
-            timely delivery and personalized support, allowing us to build long-lasting relationships.
-        </p>
-    </div>
-</div>
-
+</section>
 {% endblock %}

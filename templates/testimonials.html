@@ -1,166 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}R & D - Bichem Laboratories{% endblock %}
+{% block title %}Research & Development | Bichem Laboratories{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Bichem Laboratories R&D focuses on innovative veterinary, poultry, livestock, and aquaculture product concepts across therapeutic categories.">
+<meta name="keywords" content="Bichem R&D, veterinary innovation, poultry product range, animal healthcare research">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Research & Development - Bichem Laboratories">
+<meta property="og:description" content="Innovative animal healthcare concepts and therapeutic product categories from Bichem Laboratories.">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock %}
 
 {% block content %}
-<style>
-    .rnd{
-        padding: 60px;
-    }
-    h1 {
-        text-align: center;
-        color: #4A148C;
-        margin-bottom: 20px;
-    }
+<section class="page-hero compact-hero">
+    <div class="container">
+        <span class="eyebrow">Bichem innovations</span>
+        <h1>Research and development for practical animal healthcare.</h1>
+        <p>Our R&D approach focuses on new concepts for poultry, livestock, agriculture, and aquaculture health needs.</p>
+    </div>
+</section>
 
-    p {
-        font-size: 18px;
-        line-height: 1.6;
-        text-align: justify;
-    }
-
-    .product-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    .product-table th, .product-table td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .product-table th {
-        background-color: #4A148C;
-        color: white;
-    }
-
-    .product-table tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-</style>
-
-<div class="rnd">
-    <h1>Research & Development</h1>
-    <p>
-        Our aim is to always introduce innovative solutions. Our R&D team brings unique concepts for Agriculture and Livestock,
-        such as MASTICLEAN for mastitis fibrosis and other milking problems, and immune modulation therapy for viral, bacterial, and protozoan diseases.
-    </p>
-    <p>
-        At BICHEM LABORATORIES, we are committed to growth in R&D and manufacturing under GMP conditions. Our corporate R&D team plays a crucial role in the company’s expansion.
-    </p>
-    <p>
-        We continuously introduce new products and concepts in various therapeutic segments, ensuring we meet the evolving needs of the poultry, livestock, and agriculture industries.
-    </p>
-    <h2 class="mt-4">Our Product Range</h2>
-    <table class="product-table">
-        <tr>
-            <th>Category</th>
-            <th>Products</th>
-        </tr>
-        <tr>
-            <td>Chicks Livability</td>
-            <td>BICHEMSOL, EUROFRESH, BROODAR, LEVOVIT PLUS</td>
-        </tr>
-        <tr>
-            <td>Anti Virus</td>
-            <td>VIROK, VIROK-T, VIROK-PD, VIROK-F, BICHEMSOL, ZERMKILL, LEVOVIT</td>
-        </tr>
-        <tr>
-            <td>Anti Protozoan</td>
-            <td>COLICOX, COLICOX PLUS, ZERMKILL, LEVOVIT PLUS, FAWLI VIT-K, VIROK-F</td>
-        </tr>
-        <tr>
-            <td>Anti Bacterial</td>
-            <td>RESPI CIN, LEVOVIT, BICIPRO-TZ, BICHEMGUARD, ZERMKILL, VIROK-F</td>
-        </tr>
-        <tr>
-            <td>Anti Gout</td>
-            <td>BICHEMSOL, BILIV FORTE, FAWLI GROW-A, EUROFRESH, VIROK-F, BICHEMGUARD</td>
-        </tr>
-        <tr>
-            <td>Respiratory Protector</td>
-            <td>RESPI BIOTIC, RESPICIN, COLICOX PLUS</td>
-        </tr>
-        <tr>
-            <td>Toxin Eliminators</td>
-            <td>BILIV FORTE, BICHEM TOX, BICHEMTOX PLUS, ZERMKILL</td>
-        </tr>
-        <tr>
-            <td>Liver and Appetite Stimulators</td>
-            <td>BILIV, BILIV FORTE, BILIV BOOST</td>
-        </tr>
-        <tr>
-            <td>Milk Enhancer</td>
-            <td>LYSICAL-AD3, LYSICAL GOLD, MASTICLEAN</td>
-        </tr>
-        <tr>
-            <td>Electrolyte and Rehydration</td>
-            <td>BICHEMLYTE, BICHEMCOOL</td>
-        </tr>
-        <tr>
-            <td>Probiotics with Prebiotics</td>
-            <td>PROBISAC</td>
-        </tr>
-        <tr>
-            <td>Anti Diarrhoeal</td>
-            <td>AKSTRA DIARRH</td>
-        </tr>
-        <tr>
-            <td>Anti Bloat</td>
-            <td>AKSTRA BLOAT</td>
-        </tr>
-        <tr>
-            <td>Cut, Burn & Wound</td>
-            <td>AKSTRA WOUND</td>
-        </tr>
-        <tr>
-            <td>Respiratory Tract Infection</td>
-            <td>AKSTRA COUGH</td>
-        </tr>
-        <tr>
-            <td>Vital Organ Toning</td>
-            <td>AKSTRA TONE</td>
-        </tr>
-        <tr>
-            <td>Ammonia Reducer (Poultry)</td>
-            <td>FAWLI CLEAN</td>
-        </tr>
-        <tr>
-            <td>Mineral with Slow Release</td>
-            <td>AKSTRA MIN</td>
-        </tr>
-        <tr>
-            <td>Zeolite</td>
-            <td>RESPILITE</td>
-        </tr>
-        <tr>
-            <td>Pond Cleaner</td>
-            <td>RESPI CLEAN</td>
-        </tr>
-        <tr>
-            <td>Minerals for Fishery</td>
-            <td>RESPI MIN</td>
-        </tr>
-        <tr>
-            <td>Fishery Growth Promoter</td>
-            <td>RESPI GROW</td>
-        </tr>
-        <tr>
-            <td>Probiotics for Fishery</td>
-            <td>RESPI SAC</td>
-        </tr>
-        <tr>
-            <td>Plankton Booster</td>
-            <td>RESPI PLANKT</td>
-        </tr>
-        <tr>
-            <td>Pond Ammonia Absorbent</td>
-            <td>RESPI LIFE</td>
-        </tr>
-    </table>
-</div>
-
+<section class="section">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-5">
+                <div class="detail-panel">
+                    <h2>Innovation focus</h2>
+                    <p>Our team develops solutions such as MASTICLEAN for mastitis fibrosis and milking challenges, along with immune modulation approaches for viral, bacterial, and protozoan disease pressure.</p>
+                    <p>Bichem Laboratories is committed to growth in R&D and manufacturing under GMP conditions, with a product range designed around therapeutic segments and field requirements.</p>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="range-table-wrap">
+                    <table class="range-table">
+                        <thead><tr><th>Category</th><th>Products</th></tr></thead>
+                        <tbody>
+                            <tr><td>Chicks Livability</td><td>BICHEMSOL, EUROFRESH, BROODAR, LEVOVIT PLUS</td></tr>
+                            <tr><td>Anti Virus</td><td>VIROK, VIROK-T, VIROK-PD, VIROK-F, BICHEMSOL, ZERMKILL, LEVOVIT</td></tr>
+                            <tr><td>Anti Protozoan</td><td>COLICOX, COLICOX PLUS, ZERMKILL, LEVOVIT PLUS, FAWLI VIT-K, VIROK-F</td></tr>
+                            <tr><td>Anti Bacterial</td><td>RESPI CIN, LEVOVIT, BICIPRO-TZ, BICHEMGUARD, ZERMKILL, VIROK-F</td></tr>
+                            <tr><td>Anti Gout</td><td>BICHEMSOL, BILIV FORTE, FAWLI GROW-A, EUROFRESH, VIROK-F, BICHEMGUARD</td></tr>
+                            <tr><td>Respiratory Protector</td><td>RESPI BIOTIC, RESPICIN, COLICOX PLUS</td></tr>
+                            <tr><td>Toxin Eliminators</td><td>BILIV FORTE, BICHEM TOX, BICHEMTOX PLUS, ZERMKILL</td></tr>
+                            <tr><td>Liver and Appetite Stimulators</td><td>BILIV, BILIV FORTE, BILIV BOOST</td></tr>
+                            <tr><td>Milk Enhancer</td><td>LYSICAL-AD3, LYSICAL GOLD, MASTICLEAN</td></tr>
+                            <tr><td>Electrolyte and Rehydration</td><td>BICHEMLYTE, BICHEMCOOL</td></tr>
+                            <tr><td>Aquaculture</td><td>RESPI CLEAN, RESPI MIN, RESPI GROW, RESPI SAC, RESPI PLANKT, RESPI LIFE</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -5,10 +5,22 @@ from django.template.loader import render_to_string
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from .models import Medicine
+
+
+def product_wording(value):
+    if not value:
+        return value
+    return (
+        value.replace('Medicines', 'Products')
+        .replace('medicines', 'products')
+        .replace('Medicine', 'Product')
+        .replace('medicine', 'product')
+    )
  
  
 def index(request):
-    return render(request, 'index.html')
+    featured_products = Medicine.objects.exclude(image='').order_by('name')[:6]
+    return render(request, 'index.html', {'featured_products': featured_products})
 
 def about(request):
     return render(request, 'about.html')
@@ -37,8 +49,12 @@ def medicine_detail(request, slug):
     medicine = get_object_or_404(Medicine, slug=slug)
     return render(request, 'medicine_detail.html', {
         'medicine': medicine,
-        'meta_title': medicine.meta_title,
-        'meta_description': medicine.meta_description,
+        'product': medicine,
+        'related_products': Medicine.objects.exclude(pk=medicine.pk).order_by('name')[:4],
+        'canonical_url': f'https://bichemlaboratories.com/medicines/{medicine.slug}/',
+        'image_url': f'https://bichemlaboratories.com{medicine.image.url}' if medicine.image else None,
+        'meta_title': product_wording(medicine.meta_title),
+        'meta_description': product_wording(medicine.meta_description),
     })
 
 
@@ -63,6 +79,7 @@ def product_list(request):
 def product_detail(request, slug):
     """Product detail view with full SEO optimization"""
     product = get_object_or_404(Medicine, slug=slug)
+    related_products = Medicine.objects.exclude(pk=product.pk).order_by('name')[:4]
     
     # Generate absolute URLs
     canonical_url = f'https://bichemlaboratories.com/products/{product.slug}/'
@@ -72,8 +89,9 @@ def product_detail(request, slug):
         'product': product,
         'canonical_url': canonical_url,
         'image_url': image_url,
-        'meta_title': product.meta_title or f"{product.name} - Veterinary Medicine | Bichem Laboratories",
-        'meta_description': product.meta_description or product.description or product.title[:160],
+        'related_products': related_products,
+        'meta_title': product_wording(product.meta_title) or f"{product.name} - Veterinary Product | Bichem Laboratories",
+        'meta_description': product_wording(product.meta_description) or product_wording(product.description) or product_wording(product.title[:160]),
     }
     return render(request, 'products/detail.html', context)
 

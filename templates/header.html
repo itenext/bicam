@@ -1,38 +1,29 @@
 {% load static %}
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light ">
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light" aria-label="Main navigation">
         <div class="container">
-            <a href="{% url 'index' %}" class="logo">
-                <img src="{% static 'images/logo.jpg' %}" alt="Bichem Laboratories">
+            <a href="{% url 'index' %}" class="navbar-brand logo" aria-label="Bichem Laboratories home">
+                <img src="{% static 'images/logo.jpg' %}" alt="Bichem Laboratories" width="310" height="84">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'index' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'about' %}">About</a></li>
-                    <li class="nav-item"><a class="nav-link text-info" href="{% url 'medicines' %}">Products</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'diseases' %}">Diseases</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'testimonials' %}">Bichem Innovations</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'contact' %}">Contact: &nbsp; <span style="font-weight: 400;"><i class="fas fa-phone"></i>+91 8083748742 </span></a></li>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'medicines' %}">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'diseases' %}">Diseases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'testimonials' %}">R&D</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-brand btn-sm header-call-btn" href="tel:+917903021646">
+                            <i class="fas fa-phone-alt"></i> +91 7903021646
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
 </header>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    let links = document.querySelectorAll(".nav-link");
-    let currentUrl = window.location.href;
-    
-    links.forEach(link => {
-        if (link.href === currentUrl) {
-            link.classList.add("active");
-        }
-    });
-});
-
-</script>

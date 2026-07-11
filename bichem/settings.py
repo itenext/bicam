@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4-8fa4oi9#1a6yb_+bp&kg+68p!5y1j5*ir7)*_^2&s^u393so'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('1', 'true', 'yes', 'on')
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,11 +59,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# For production - absolute URLs
-if not DEBUG:
-    STATIC_URL = '/static/'
-    MEDIA_URL = 'https://bichemlaboratories.com/media/'
 
 TEMPLATES = [
     {

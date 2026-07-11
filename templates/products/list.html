@@ -4,120 +4,98 @@
 {% block title %}Veterinary Products - Bichem Laboratories{% endblock %}
 
 {% block meta %}
-<meta name="description" content="Browse our complete range of veterinary medicines and animal healthcare products. High-quality solutions for livestock, poultry, and pets.">
-<meta name="keywords" content="veterinary medicines, animal healthcare, livestock medicine, poultry medicine, pet medicine">
+<meta name="description" content="Browse Bichem Laboratories veterinary products and animal healthcare products for livestock, poultry, aquaculture, and pets.">
+<meta name="keywords" content="veterinary products, animal healthcare, livestock products, poultry products, pet products">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Veterinary Products - Bichem Laboratories">
-<meta property="og:description" content="Browse our complete range of veterinary medicines and animal healthcare products.">
-<meta property="og:image" content="https://bichemlaboratories.com{% static 'images/logo.jpg' %}">
-<meta property="og:url" content="https://bichemlaboratories.com/products/">
+<meta property="og:description" content="Browse our complete range of veterinary products and animal healthcare products.">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo.jpg' %}">
+<meta property="og:url" content="{{ canonical_url }}">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Veterinary Products - Bichem Laboratories">
-<meta name="twitter:description" content="Browse our complete range of veterinary medicines and animal healthcare products.">
-<meta name="twitter:image" content="https://bichemlaboratories.com{% static 'images/logo.jpg' %}">
 <link rel="canonical" href="{{ canonical_url }}">
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <header class="text-center mb-5">
-        <h1>Veterinary Products</h1>
-        <p class="lead">High-quality animal healthcare solutions for livestock, poultry, and pets</p>
-    </header>
+<section class="page-hero compact-hero">
+    <div class="container">
+        <span class="eyebrow">SEO product catalogue</span>
+        <h1>Veterinary products</h1>
+        <p>High-quality animal healthcare solutions for livestock, poultry, aquaculture, and pets.</p>
+    </div>
+</section>
 
-    {% if products %}
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+<section class="section">
+    <div class="container">
+        {% if products %}
+        <div class="product-grid">
             {% for product in products %}
-            <div class="col">
-                <article class="card h-100 shadow-sm">
+            <article class="product-card">
+                <a href="{% url 'product_detail' product.slug %}" class="product-image">
                     {% if product.image %}
-                        <img src="https://bichemlaboratories.com{{ product.image.url }}" 
-                             class="card-img-top" 
-                             alt="{{ product.name }}"
-                             width="300" 
-                             height="200"
-                             loading="lazy">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="320" height="240" loading="lazy">
                     {% else %}
-                        <img src="https://bichemlaboratories.com{% static 'images/no-image.png' %}" 
-                             class="card-img-top" 
-                             alt="No image available"
-                             width="300" 
-                             height="200"
-                             loading="lazy">
+                    <img src="{% static 'images/medicine.jpg' %}" alt="{{ product.name }}" width="320" height="240" loading="lazy">
                     {% endif %}
-                    
-                    <div class="card-body d-flex flex-column">
-                        <h2 class="card-title h5">{{ product.name }}</h2>
-                        <p class="card-text flex-grow-1">
-                            {{ product.description|default:product.title|truncatewords:20 }}
-                        </p>
-                        <a href="https://bichemlaboratories.com/products/{{ product.slug }}/" 
-                           class="btn btn-primary mt-auto">
-                            View Details
+                </a>
+                <div class="product-card-body">
+                    <h2><a href="{% url 'product_detail' product.slug %}">{{ product.name }}</a></h2>
+                    <p>{{ product.description|default:product.title|truncatewords:20 }}</p>
+                    <div class="product-actions">
+                        <a href="{% url 'product_detail' product.slug %}" class="btn btn-brand btn-sm">View Details</a>
+                        <a href="https://wa.me/918083748742?text=I%20want%20details%20for%20{{ product.name|urlencode }}" class="btn btn-soft btn-sm">
+                            <i class="fab fa-whatsapp"></i> Enquire
                         </a>
                     </div>
-                </article>
-            </div>
+                </div>
+            </article>
             {% endfor %}
         </div>
 
-        <!-- Pagination -->
         {% if page_obj.has_other_pages %}
         <nav aria-label="Product pagination" class="mt-5">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" rel="prev">Previous</a>
-                    </li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}" rel="prev">Previous</a></li>
                 {% endif %}
-                
                 {% for num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == num %}
-                        <li class="page-item active">
-                            <span class="page-link">{{ num }}</span>
-                        </li>
-                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                        </li>
-                    {% endif %}
+                {% if page_obj.number == num %}
+                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
                 {% endfor %}
-                
                 {% if page_obj.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" rel="next">Next</a>
-                    </li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}" rel="next">Next</a></li>
                 {% endif %}
             </ul>
         </nav>
         {% endif %}
-
-    {% else %}
-        <div class="text-center">
-            <p class="lead">No products available at the moment.</p>
+        {% else %}
+        <div class="empty-state">
+            <h2>No products available at the moment.</h2>
+            <p>Contact Bichem Laboratories for product availability.</p>
         </div>
-    {% endif %}
-</div>
+        {% endif %}
+    </div>
+</section>
 
-<!-- Structured Data for Product List -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "ItemList",
   "name": "Veterinary Products",
-  "description": "Complete range of veterinary medicines and animal healthcare products",
-  "url": "https://bichemlaboratories.com/products/",
+  "url": "{{ canonical_url }}",
   "numberOfItems": {{ products|length }},
   "itemListElement": [
     {% for product in products %}
     {
       "@type": "Product",
+      "position": {{ forloop.counter }},
       "name": "{{ product.name|escapejs }}",
       "description": "{{ product.description|default:product.title|striptags|truncatechars:200|escapejs }}",
-      "url": "https://bichemlaboratories.com/products/{{ product.slug }}/",
-      "image": "https://bichemlaboratories.com{{ product.image.url }}",
-      "position": {{ forloop.counter }}
+      "url": "https://bichemlaboratories.com/products/{{ product.slug }}/"{% if product.image %},
+      "image": "https://bichemlaboratories.com{{ product.image.url }}"{% endif %}
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ]

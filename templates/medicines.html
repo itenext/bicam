@@ -1,158 +1,138 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!--{% block title %}All Medicines - Bichem Laboratories{% endblock %}-->
-<title id="meta-title">All Veterinary Product - Best Products</title>
-<meta name="description" content="Find the best veterinary medicines for different treatments. Browse our full list and see ingredients, dosage, and recommendations.">
-<meta name="keywords" content="veterinary medicines, pet healthcare, animal drugs">
+{% block title %}Veterinary & Poultry Products | Bichem Laboratories{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Browse Bichem Laboratories veterinary, poultry, livestock, aquaculture, and animal healthcare product range with ingredients, dosage, indications, and enquiry options.">
+<meta name="keywords" content="Bichem products, poultry products, veterinary products, livestock supplements, animal healthcare products">
 <meta name="robots" content="index, follow">
-<meta property="og:title" id="og-title" content="All Veterinary Product">
-<meta property="og:description" id="og-description" content="Find the best veterinary Product for different treatments.">
-<meta property="og:image" id="og-image" content="default-image.jpg">
-
-
+<meta property="og:title" content="Veterinary & Poultry Products - Bichem Laboratories">
+<meta property="og:description" content="Complete Bichem Laboratories product range for animal healthcare and farm performance.">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/medicine.jpg' %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock %}
 
 {% block content %}
-<style>
-    .modal-content {
-        border-radius: 12px;
-        padding: 20px;
-    }
-
-    .modal-header {
-        background: linear-gradient(to right, #C596B8, #71A6DC, #636A96);
-        color: white;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-    }
-
-    .modal-title {
-        font-size: 22px;
-        font-weight: bold;
-    }
-
-    .modal-body {
-        font-size: 16px;
-        line-height: 1.5;
-        text-align: left;
-    }
-
-    #modal-image {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-</style>
-
-<h1 class="text-center mb-4 margin pt-4">Products List</h1>
-
-<div class="container mt-4 position-relative">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        {% for medicine in medicines %}
-        <div class="col">
-            <div class="card text-center h-100 shadow-sm">
-                {% if medicine.image %}
-                <img src="{{ medicine.image.url }}" class="card-img-top" alt="{{ medicine.name }}">
-                {% else %}
-                <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="No Image">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ medicine.name }}</h5>
-                    <button class="btn btn-primary view-more-btn" data-bs-toggle="modal"
-                        data-bs-target="#medicineModal" data-name="{{ medicine.name }}"
-                        data-image="{{ medicine.image.url }}" data-title="{{ medicine.title }}"
-                        data-ingredients="{{ medicine.ingredients }}" data-dose="{{ medicine.dose }}"
-                        data-indications="{{ medicine.indications }}">
-                        View More
-                    </button>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <p class="text-center">No Product available.</p>
-        {% endfor %}
+<section class="page-hero compact-hero">
+    <div class="container">
+        <span class="eyebrow">Product catalogue</span>
+        <h1>Veterinary, poultry and animal healthcare products</h1>
+        <p>Explore Bichem Laboratories products with quick details, dosage guidance, indications, and direct enquiry actions.</p>
     </div>
-</div>
+</section>
 
-<!-- Modal for Medicine Details -->
-<div class="modal fade" id="medicineModal" tabindex="-1" aria-labelledby="medicineModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<section class="section">
+    <div class="container">
+        <div class="product-grid">
+            {% for medicine in medicines %}
+            <article class="product-card">
+                <button class="product-image product-modal-trigger" type="button" data-bs-toggle="modal"
+                    data-bs-target="#medicineModal" data-name="{{ medicine.name|escape }}"
+                    data-image="{% if medicine.image %}{{ medicine.image.url }}{% else %}{% static 'images/medicine.jpg' %}{% endif %}"
+                    data-title="{{ medicine.title|escape }}"
+                    data-ingredients="{{ medicine.ingredients|escape }}"
+                    data-dose="{{ medicine.dose|escape }}"
+                    data-indications="{{ medicine.indications|escape }}"
+                    data-detail-url="{% url 'product_detail' medicine.slug %}">
+                    {% if medicine.image %}
+                    <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}" loading="lazy">
+                    {% else %}
+                    <img src="{% static 'images/medicine.jpg' %}" alt="{{ medicine.name }}" loading="lazy">
+                    {% endif %}
+                </button>
+                <div class="product-card-body">
+                    <h2>{{ medicine.name }}</h2>
+                    <p>{{ medicine.description|default:medicine.title|truncatewords:18 }}</p>
+                    <div class="product-actions">
+                        <button class="btn btn-outline-brand btn-sm product-modal-trigger" type="button"
+                            data-bs-toggle="modal" data-bs-target="#medicineModal"
+                            data-name="{{ medicine.name|escape }}"
+                            data-image="{% if medicine.image %}{{ medicine.image.url }}{% else %}{% static 'images/medicine.jpg' %}{% endif %}"
+                            data-title="{{ medicine.title|escape }}"
+                            data-ingredients="{{ medicine.ingredients|escape }}"
+                            data-dose="{{ medicine.dose|escape }}"
+                            data-indications="{{ medicine.indications|escape }}"
+                            data-detail-url="{% url 'product_detail' medicine.slug %}">
+                            Quick View
+                        </button>
+                        <a href="{% url 'product_detail' medicine.slug %}" class="btn btn-soft btn-sm">Full Details</a>
+                    </div>
+                </div>
+            </article>
+            {% empty %}
+            <div class="empty-state">
+                <h2>No products available.</h2>
+                <p>Please check back soon or contact Bichem Laboratories directly.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<div class="modal fade product-modal" id="medicineModal" tabindex="-1" aria-labelledby="medicineModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="medicineModalLabel"></h5>
+                <div>
+                    <span class="eyebrow">Product quick view</span>
+                    <h2 class="modal-title h4" id="medicineModalLabel"></h2>
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img id="modal-image" class="img-fluid mb-3" alt="No Image">
-                <p><strong>Title:</strong> <span id="modal-title"></span></p>
-                <p><strong>Ingredients:</strong> <span id="modal-ingredients"></span></p>
-                <p><strong>Dose:</strong> <span id="modal-dose"></span></p>
-                <p><strong>Indications:</strong> <span id="modal-indications"></span></p>
+                <div class="row g-4">
+                    <div class="col-md-5">
+                        <img id="modal-image" class="modal-product-image" alt="">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="detail-list">
+                            <section>
+                                <h3>Product Information</h3>
+                                <p id="modal-title"></p>
+                            </section>
+                            <section>
+                                <h3>Ingredients</h3>
+                                <p id="modal-ingredients"></p>
+                            </section>
+                            <section>
+                                <h3>Dose</h3>
+                                <p id="modal-dose"></p>
+                            </section>
+                            <section>
+                                <h3>Indications</h3>
+                                <p id="modal-indications"></p>
+                            </section>
+                        </div>
+                        <div class="modal-actions">
+                            <a id="modal-detail-link" href="#" class="btn btn-brand">Full Product Page</a>
+                            <a id="modal-whatsapp-link" href="#" class="btn btn-soft"><i class="fab fa-whatsapp"></i> Enquire</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "ItemList",
-  "name": "Veterinary Medicines",
+  "name": "Bichem Laboratories Veterinary Products",
   "itemListElement": [
     {% for medicine in medicines %}
     {
       "@type": "Product",
-      "name": "{{ medicine.name }}",
-      "description": "{{ medicine.meta_description }}",
-      "image": "{{ medicine.image.url }}",
-      "url": "https://yourwebsite.com/#{{ medicine.slug }}"
+      "position": {{ forloop.counter }},
+      "name": "{{ medicine.name|escapejs }}",
+      "description": "{{ medicine.description|striptags|truncatechars:200|escapejs }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'product_detail' medicine.slug %}"{% if medicine.image %},
+      "image": "{{ request.scheme }}://{{ request.get_host }}{{ medicine.image.url }}"{% endif %}
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ]
 }
-</script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById('medicineModal');
-
-    modal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
-
-        if (button) {
-            document.getElementById("medicineModalLabel").textContent = button.getAttribute('data-name');
-            document.getElementById("modal-image").src = button.getAttribute('data-image') || "{% static 'images/no-image.png' %}";
-            document.getElementById("modal-title").textContent = button.getAttribute('data-title') || "N/A";
-            document.getElementById("modal-ingredients").textContent = button.getAttribute('data-ingredients') || "N/A";
-            document.getElementById("modal-dose").textContent = button.getAttribute('data-dose') || "N/A";
-            document.getElementById("modal-indications").textContent = button.getAttribute('data-indications') || "N/A";
-        }
-    });
-
-    modal.addEventListener('hidden.bs.modal', function () {
-        history.pushState(null, '', `/medicines/`);
-    });
-});
-
- function updateMetaTags(medicineName, description, imageUrl) {
-    document.title = medicineName + " - Veterinary Medicine";
-    document.querySelector("meta[name='description']").setAttribute("content", description);
-    document.querySelector("meta[property='og:title']").setAttribute("content", medicineName);
-    document.querySelector("meta[property='og:description']").setAttribute("content", description);
-    document.querySelector("meta[property='og:image']").setAttribute("content", imageUrl);
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".view-more-btn").forEach(button => {
-      button.addEventListener("click", function () {
-        let medicineName = this.getAttribute("data-name");
-        let description = this.getAttribute("data-description");
-        let imageUrl = this.getAttribute("data-image");
-        updateMetaTags(medicineName, description, imageUrl);
-      });
-    });
-  });
 </script>
 {% endblock %}
