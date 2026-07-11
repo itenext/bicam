@@ -62,7 +62,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # For production - absolute URLs
 if not DEBUG:
-    STATIC_URL = 'https://bichemlaboratories.com/static/'
+    STATIC_URL = '/static/'
     MEDIA_URL = 'https://bichemlaboratories.com/media/'
 
 TEMPLATES = [
