@@ -1,0 +1,51 @@
+{% load static %}
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Logo and Slogan Section -->
+        <div class="footer-brand">
+            <!-- <h2 class="footer-logo">LOGO</h2> -->
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'images/logo.jpg' %}" alt="Bichem Laboratories">
+            </a>
+            <p class="footer-slogan">Empowering Agriculture Through Innovative Food Supplements and Animal Healthcare
+                Products</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-nav">
+           
+
+            <div class="footer-col">
+                <h5>Our office</h5>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Head office – 160 , gali no – 4 , karawal nagar extension
+                    </li>
+                   
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> +91 8083748742</li>
+                    <li><i class="fas fa-phone-alt"></i> +91 7903021646</li>
+                    <li><i class="fas fa-envelope"></i> info@bichemlaboratories.com</li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Social Links and Copyright -->
+    <div class="footer-bottom">
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fas fa-rss"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-flickr"></i></a>
+        </div>
+        <p class="copyright">©Copyright All rights reserved Bichem Laboratories.</p>
+    </div>
+</footer>

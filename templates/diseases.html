@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Diseases - Bichem Laboratories{% endblock %}
+
+
+{% block content %}
+<style>
+  /* General styling */
+.service_section {
+    padding: 2rem 1rem;
+}
+
+/* Container styling */
+.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Image styling */
+.d-flex img {
+    border-radius: 10px 30px;
+}
+
+/* Text alignment */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    text-align: left;
+}
+
+ul li {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .d-flex img {
+        margin-bottom: 10px;
+    }
+}
+
+</style>
+<section id="other" class="service_section p-3 p-md-4" style="background-image: url('images/about-bg-3.png');">
+  <h2 class="text-center" style="padding: 2rem 2rem;">
+    Common Health <span style="color: #263B80;"><strong>Concerns</strong></span>
+  </h2>
+
+  <div class="d-flex justify-content-around flex-wrap">
+    <!-- Dog Section -->
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+        <img src="{%static 'images/puppy.jpeg' %}" class="img-fluid" alt="dog">
+      </div>
+      <div class="min-180">
+        <ul>
+          <li>Ear Infection</li>
+          <li>Cataract</li>
+          <li>Obesity</li>
+          <li>Ectoparasite</li>
+          <li>Diarrhea</li>
+          <li>Vomiting/Upset Stomach</li>
+          <li>Arthritis</li>
+          <li>Wounds</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Cat Section -->
+    <div class="d-flex justify-content-center">
+      <div>
+        <img src="{%static 'images/cat.jpeg' %}" class="img-fluid" alt="cat">
+      </div>
+      <div class="min-180">
+        <ul>
+          <li>Fleas</li>
+          <li>Obesity</li>
+          <li>Dental Disease</li>
+          <li>Viral Infections</li>
+          <li>Bladder Infection</li>
+          <li>Vomiting</li>
+          <li>Heartworm</li>
+          <li>Broken bones</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bird Section -->
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+        <img src="{%static 'images/parrot.jpeg' %}" class="img-fluid" alt="bird">
+      </div>
+      <div class="min-180">
+        <ul>
+          <li>Trauma</li>
+          <li>Abnormal Beak Growth</li>
+          <li>Fungal Infection</li>
+          <li>Polymavirus</li>
+          <li>Bacterial Infections</li>
+          <li>Respiratory Infections</li>
+          <li>Nutritional Deficiencies</li>
+          <li>Psittacosis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Cow Section -->
+    <div class="d-flex justify-content-center">
+      <div>
+        <img src="{%static 'images/cow.jpeg' %}" class="img-fluid" alt="cow">
+      </div>
+      <div class="min-180">
+        <ul>
+          <li>Brucellosis</li>
+          <li>Epizootic Hemorrhagic</li>
+          <li>Bovine Tuberculosis</li>
+          <li>Foot and Mouth Disease</li>
+          <li>Johne's Disease</li>
+          <li>Psoroptic Mange</li>
+          <li>Lumpy Skin Disease</li>
+          <li>Bovine Viral Diarrhea</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Goat Section -->
+    <div class="d-flex justify-content-center">
+      <div>
+        <img src="{%static 'images/goat.jpeg' %}" class="img-fluid" alt="goat">
+      </div>
+      <div class="min-180">
+        <ul>
+          <li>Campylobacteriosis</li>
+          <li>Brucellosis</li>
+          <li>Escherichia Coli</li>
+          <li>Listeriosis</li>
+          <li>Bluetongue</li>
+          <li>Q Fever</li>
+          <li>Salmonellosis</li>
+          <li>Anthrax</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Hen Section -->
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+        <img src="{%static 'images/hen.jpeg' %}" class="img-fluid" alt="hen">
+      </div>
+      <div class="min-180">
+        <ul>
+          <li>Fowl Pox</li>
+          <li>Tick Fever</li>
+          <li>Avian Leucosis</li>
+          <li>Rickets</li>
+          <li>Nutritional Roup</li>
+          <li>Crop Bound</li>
+          <li>Round/Tape Worm</li>
+          <li>Perosis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

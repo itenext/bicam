@@ -1,0 +1,299 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome to Bichem Laboratories{% endblock %}
+{% block meta_tags %}
+<meta name="description" content="Bichem Laboratories - Leading manufacturer of veterinary medicines. High-quality products for animal health.">
+<meta name="keywords" content="veterinary medicine, animal health, Bichem Laboratories, vet pharmacy">
+<meta property="og:title" content="Bichem Laboratories - Animal Health Solutions">
+<meta property="og:description" content="Leading manufacturer of veterinary medicines with trusted solutions for animal health.">
+<meta property="og:image" content="{% static 'images/logo.jpg' %}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- Hero Section with Bootstrap Carousel -->
+<section class="hero-section">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/home.jpg' %}" class="d-block w-100" alt="Laboratory">
+                <div class="carousel-caption">
+                    <h1>Welcome to Bichem Laboratories</h1>
+                    <p>Innovating Veterinary Healthcare</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/abt_bichem.jpg' %}" class="d-block w-100" alt="Cow">
+                <div class="carousel-caption">
+                    <h1>Quality Animal Healthcare</h1>
+                    <p>Ensuring the best care for your livestock</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+
+
+
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Image -->
+            <div class="col-lg-6 col-md-12">
+                <img src="{% static 'images/abt_bichem.jpg' %}" alt="About Us" class="about-image">
+            </div>
+            <!-- Right Text -->
+            <div class="col-lg-6 col-md-12">
+                <div class="about-text">
+                    <h2>About Bichem Laboratories</h2>
+                    <p>Welcome to Bichem Laboratories, a trusted name in veterinary medicine and animal healthcare.
+                        Our mission is to provide innovative and effective solutions to ensure the well-being of
+                        animals.</p>
+                    <p>With years of research and expertise, we have developed a wide range of veterinary medicines
+                        to help improve animal health worldwide.</p>
+                    <p><strong>Why Choose Us?</strong></p>
+                    <ul>
+                        <li>✔ High-quality veterinary medicines</li>
+                        <li>✔ Research-driven solutions</li>
+                        <li>✔ Committed to animal health and well-being</li>
+                        <li>✔ Trusted by veterinarians worldwide</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="medicines-section py-5">
+    <h2 class="text-center mb-5">Products List</h2>
+    <div class="container">
+
+        <div class="row">
+            <!-- Medicine Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm rounded-lg border-0">
+                    <img src="{% static 'images/IMG_1.png' %}" class="card-img-top rounded-top" alt="Medicine 1">
+                    <div class="card-body">
+                        <h5 class="card-title">AKSTRA COUGH</h5>
+                        <p class="card-text">To respiratory tract infection and cough reducer.</p>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Medicine Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm rounded-lg border-0">
+                    <img src="{% static 'images/IMG_2.png' %}" class="card-img-top rounded-top" alt="Medicine 2">
+                    <div class="card-body">
+                        <h5 class="card-title">BICHEMSOL</h5>
+                        <p class="card-text">To control of IBH ( Inclusion Body Hepatitis), SHS ( Swollen Head Syndrome
+                            ), Yolk sac Infection, Nephrosis,
+                            Toxicity, Gout and all kidney syndromes
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Medicine Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm rounded-lg border-0">
+                    <img src="{% static 'images/IMG_3.png' %}" class="card-img-top rounded-top" alt="Medicine 3">
+                    <div class="card-body">
+                        <h5 class="card-title">LEVOVIT BH</h5>
+                        <p class="card-text">A brief description of Medicine 3 with its benefits and use cases.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Medicines Button -->
+    </div>
+    <div class="text-center mt-5">
+        <a href="{% url 'medicines' %}" class="btn btn-secondary btn-lg">View All Medicines</a>
+    </div>
+</section>
+
+
+<section class="why-bichem">
+    <h1 class="section-heading">Why Bichem Laboratories?</h1>
+    <div class="container">
+
+        <div class="why-content">
+            <div class="why-box">
+                <i class="fas fa-flask"></i>
+                <h3>Innovative Research</h3>
+                <p>We are committed to cutting-edge research in animal healthcare and food supplements.</p>
+            </div>
+            <div class="why-box">
+                <i class="fas fa-leaf"></i>
+                <h3>Eco-Friendly Solutions</h3>
+                <p>Our products are developed with sustainability and environmental safety in mind.</p>
+            </div>
+            <div class="why-box">
+                <i class="fas fa-user-md"></i>
+                <h3>Expert Team</h3>
+                <p>We have a team of highly qualified veterinarians and scientists ensuring product quality.</p>
+            </div>
+            <div class="why-box">
+                <i class="fas fa-check-circle"></i>
+                <h3>Quality Assurance</h3>
+                <p>All our products go through rigorous testing to meet industry standards.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="testimonial-section">
+    <div class="container">
+        <h2 class="text-center mb-4">What Others Say About Bichem Laboratories</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Bichem Laboratories' products have transformed my poultry farming.
+                            Excellent quality and results!"</p>
+                        <p class="testimonial-author">- Rahul Sharma</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Amazing research-driven solutions! My cattle's health has improved
+                            significantly."</p>
+                        <p class="testimonial-author">- Priya Verma</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I trust Bichem for all my agricultural needs. Their innovation is
+                            unmatched!"</p>
+                        <p class="testimonial-author">- Anil Kumar</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Top-notch customer service and outstanding product effectiveness!"
+                        </p>
+                        <p class="testimonial-author">- Meera Joshi</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<section class="faq-section">
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <div class="container">
+
+        <div class="accordion" id="faqAccordion">
+
+            <!-- Question 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeadingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapseOne">
+                        What does Bichem Laboratories specialize in?
+                    </button>
+                </h2>
+                <div id="faqCollapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Bichem Laboratories specializes in innovative animal healthcare and food supplements, ensuring
+                        high-quality solutions for livestock and poultry.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeadingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapseTwo">
+                        Are your products safe for animals?
+                    </button>
+                </h2>
+                <div id="faqCollapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! All our products go through rigorous quality control and are developed by veterinary
+                        experts to ensure safety and effectiveness.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeadingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapseThree">
+                        Where can I purchase Bichem products?
+                    </button>
+                </h2>
+                <div id="faqCollapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our products are available through authorized distributors, online platforms, and directly from
+                        our manufacturing units.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeadingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapseFour">
+                        How can I contact customer support?
+                    </button>
+                </h2>
+                <div id="faqCollapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You can contact us via email at <strong>support@bichem.com</strong> or call us at <strong>+91
+                            9876543210</strong>.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    $(document).ready(function () {
+        $(".carousel").carousel({
+            interval: 4000, // Adjust carousel speed
+            pause: "hover"
+        });
+    });
+</script>
+{% endblock %}

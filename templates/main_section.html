@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Main Section{% endblock %}
+
+{% block content %}
+<section class="main-carousel owl-carousel">
+    <!-- First carousel item with background image from Unsplash -->
+    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/1600x900/?nature');">
+        <div class="carousel-content">
+            <h1>Welcome to Bichem Laboratories</h1>
+            <p>Your trusted partner in research and development</p>
+        </div>
+    </div>
+    
+    <!-- Second carousel item with background image from Unsplash -->
+    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/1600x900/?technology');">
+        <div class="carousel-content">
+            <h1>Innovative Solutions</h1>
+            <p>Delivering excellence in every project</p>
+        </div>
+    </div>
+    
+    <!-- You can continue adding more carousel items here -->
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    $(document).ready(function(){
+        $(".main-carousel").owlCarousel({
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            nav: true,
+            dots: true
+        });
+    });
+</script>
+{% endblock %}
