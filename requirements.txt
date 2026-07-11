@@ -1,4 +1,10 @@
 Django>=4.2,<5.2
+<<<<<<< HEAD
 whitenoise==6.11.0
 Pillow==11.3.0
 gunicorn==23.0.0
+=======
+gunicorn==26.0.0
+whitenoise==6.11.0
+Pillow==11.3.0
+>>>>>>> eb10ed7 (hiiii)
